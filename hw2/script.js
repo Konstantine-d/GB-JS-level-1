@@ -144,8 +144,3 @@ function some(x, n) {
     }
 }
 some()
-
-// function power(val, pow) {
-//     return power(val) * power(pow)
-// }
-// power()
