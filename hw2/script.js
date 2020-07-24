@@ -28,7 +28,7 @@
 
 
 function plus(a, b) {
-    if (a && b > 0) {
+    if (a >= 0 && b >= 0) {
         console.log(a - b)
     } else if (a < 0 && b < 0) {
         console.log(a * b)
@@ -37,51 +37,38 @@ function plus(a, b) {
     }
 }
 plus();
-// ### 4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15.
-let a = 15;
+// ### 4. Присвоить переменной а значение в промежутке [0..15]. 
+//С помощью оператора switch организовать вывод чисел от a до 15.
+let a = 9;
 switch (a) {
     case 1:
-        console.log('not 15')
-        break;
+        console.log('1')
     case 2:
-        console.log('not 15')
-        break;
+        console.log('2')
     case 3:
-        console.log('not 15')
-        break;
+        console.log('3')
     case 4:
-        console.log('not 15')
-        break;
+        console.log('4')
     case 5:
-        console.log('not 15')
-        break;
+        console.log('5')
     case 6:
-        console.log('not 15')
-        break;
+        console.log('6')
     case 7:
-        console.log('not 15')
-        break;
+        console.log('7')
     case 8:
-        console.log('not 15')
-        break;
+        console.log('8')
     case 9:
-        console.log('Sweet 9')
-        break;
+        console.log('9')
     case 10:
-        console.log('not 15')
-        break;
+        console.log('10')
     case 11:
-        console.log('not 15')
-        break;
+        console.log('11')
     case 12:
-        console.log('not 15')
-        break;
+        console.log('12')
     case 13:
-        console.log('not 15')
-        break;
+        console.log('13')
     case 14:
-        console.log('not 15')
-        break;
+        console.log('14')
     case 15:
         console.log('Sweet 15')
         break;
@@ -137,10 +124,11 @@ function power(val, pow) {
 power()
 
 function some(x, n) {
-    if (n == 1) {
-        return x
+    if (n <= 0) {
+        return 1
     } else {
         return x * some(x, n - 1)
     }
 }
-some()
+const result = some(2, 0)
+console.log(result)
