@@ -10,7 +10,6 @@ const numberBox = {
     'hundreds': 0,
 }
 
-
 function addNumbers() {
     if (numberBox.number <= 9) {
         numberBox.units = numberBox.number
@@ -24,12 +23,10 @@ function addNumbers() {
     }
 }
 addNumbers()
-
-// 2) Продолжить работу с интернет-магазином:
-// В прошлом домашнем задании вы реализовали корзину на базе массивов. Какими объектами можно заменить их элементы?
-// Реализуйте такие объекты.
-// Перенести функционал подсчета корзины на объектно-ориентированную базу
-
+    // 2) Продолжить работу с интернет-магазином:
+    // В прошлом домашнем задании вы реализовали корзину на базе массивов. Какими объектами можно заменить их элементы?
+    // Реализуйте такие объекты.
+    // Перенести функционал подсчета корзины на объектно-ориентированную базу
 class Goods {
     constructor(options) {
         this.total = []
@@ -62,7 +59,6 @@ class Goods {
 
 }
 const myGoods = new Goods()
-
 let summAllGoods = myGoods.summTotalPrice()
 let addGoods = myGoods.add()
 let del = myGoods.delGoods()
