@@ -33,10 +33,9 @@ class Goods {
         this.summ = 0
         this.del = 0
         this.finalT = 0
-
+        this.reducer = (a, b) => a + b, 0
+        this.dereducer = (a, b) => a - b, 0
     }
-    reducer = (a, b) => a + b
-    dereducer = (a, b) => a - b
 
     add(val) {
         this.total.push(val)
@@ -44,11 +43,11 @@ class Goods {
     }
 
     summTotalPrice() {
-        this.summ = this.total.reduce(this.reducer)
+        this.summ = this.total.reduce(this.reducer, 0)
         return this.summ
     }
     delGoods(val) {
-        this.del = this.total.reduce(this.dereducer)
+        this.del = this.total.reduce(this.dereducer, 0)
         return this.total.pop(val)
     }
     finalTotal() {
