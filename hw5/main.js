@@ -101,15 +101,12 @@ class Multi {
     constructor() {
         //считает кол-во count товаров в объекте и перемножает их c price
         this.multiGoods = []
+        this.summGoods = 0
             // в задумке должно считать сумму price всех товаров
             // но как вывести сумму и сделать по всем ключам .price подсчёт вообще не могу продумать
             // уже и в массив пихал и т.д.
-        this.summGoods = []
 
-        this.div = document.createElement('div')
-        this.pargf = document.createElement('p')
-        this.basketBox = document.querySelector('#basket')
-            // this.reducer = reduce((x, y) => a + b, 0)
+        console.log(this.multiGoods)
     }
 
     //умножение кол-ва товаров в объекте на цену
@@ -118,45 +115,38 @@ class Multi {
             this.price = product[key].price
             this.count = product[key].count
             this.name = product[key].name
-                // console.log(this.name)
-                // console.log(this.price)
-                // console.log(this.count)
             if (this.price !== 0 && this.count !== 0) {
-                this.multiGoods = this.price * this.count
+                this.multiGoods.push(this.price * this.count)
             }
-            console.log(this.multiGoods)
+
 
         }
+        console.log(this.multiGoods)
     }
 
     summ() {
-        for (let i = 0; i < this.multiGoods.length; i++) {
-            let box = this.multiGoods[i]
-            const box2 = box.reduce((a, b) => a + b, 0)
-            console.log(box2)
+        if (this.multiGoods !== null && this.multiGoods !== undefined) {
+            this.summGoods = this.multiGoods.reduce((a, b) => a + b, 0)
         }
-        console.log(box2)
-
-        // if (this.summGoods !== null && this.summGoods !== undefined) {
-        //     console.log(this.price)
-        // }
+        console.log(this.summGoods)
     }
 
-    // }
 
-    // render() {
-    //     if (this.summGoods > 0) {
-    //         const para = document.createElement('p')
-    //         divBask.appendChild(para)
-    //     } else {
-    //         if (this.summGoods < 0) {
-    //             const para = document.createElement('p')
-    //             divBask.appendChild(para)
-    //         }
-    //     }
-
-    // }
 }
+
+// render() {
+//     if (this.summGoods > 0) {
+//         const para = document.createElement('p')
+//         divBask.appendChild(para)
+//     } else {
+//         if (this.summGoods < 0) {
+//             const para = document.createElement('p')
+//             divBask.appendChild(para)
+//         }
+//     }
+
+// }
+
 
 let multip = new Multi()
 let mnojGods = multip.mnoj()
