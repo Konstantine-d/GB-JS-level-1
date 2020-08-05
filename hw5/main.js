@@ -3,7 +3,8 @@
 // Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
 const divChekers = document.querySelector('#tableChekers')
 const divBask = document.querySelector('#basket')
-
+const para = document.createElement('p')
+    // para.classList.add('')
 divBask.classList = 'basketAll'
 
 
@@ -68,43 +69,42 @@ for (let i = 0; i < N + 1; i++) {
 // HTML-код должен содержать только div id=”catalog” без вложенного кода. 
 // Весь вид каталога генерируется JS.
 const product = {
-    '1234': {
-        name: 'Guns',
-        count: 3,
-        price: 1200,
-    },
-    '1235': {
-        name: 'Armor',
-        count: 3,
-        price: 800,
-    },
-    '1236': {
-        name: 'Helmet',
-        count: 3,
-        price: 1800,
-    },
-    '1237': {
-        name: 'Sword',
-        count: 3,
-        price: 2200,
-    },
-    '1238': {
-        name: 'Arms',
-        count: 3,
-        price: 1000,
-    },
-}
+        '1234': {
+            name: 'Guns',
+            count: 3,
+            price: 1200,
+        },
+        '1235': {
+            name: 'Armor',
+            count: 3,
+            price: 800,
+        },
+        '1236': {
+            name: 'Helmet',
+            count: 3,
+            price: 1800,
+        },
+        '1237': {
+            name: 'Sword',
+            count: 3,
+            price: 2200,
+        },
+        '1238': {
+            name: 'Arms',
+            count: 3,
+            price: 1000,
+        },
+    }
+    // const product = {}
 
 const basket = document.createElement('div')
-const clearBasket = document.createElement('p')
 class Multi {
     constructor() {
         //считает кол-во count товаров в объекте и перемножает их c price
         this.multiGoods = []
         this.summGoods = 0
-            // в задумке должно считать сумму price всех товаров
-            // но как вывести сумму и сделать по всем ключам .price подсчёт вообще не могу продумать
-            // уже и в массив пихал и т.д.
+        this.countGoods = []
+        this.summCount = 0
 
         console.log(this.multiGoods)
     }
@@ -117,8 +117,8 @@ class Multi {
             this.name = product[key].name
             if (this.price !== 0 && this.count !== 0) {
                 this.multiGoods.push(this.price * this.count)
+                this.countGoods.push(this.count)
             }
-
 
         }
         console.log(this.multiGoods)
@@ -130,28 +130,32 @@ class Multi {
         }
         console.log(this.summGoods)
     }
+    render() {
+        for (const key in product) {
+            this.count = product[key].count
+            if (this.count !== 0) {
+                this.summCount = this.countGoods.reduce((a, b) => a + b, 0)
+            }
+        }
 
 
+        if (this.summGoods > 0) {
+            para.innerText = 'В корзине' + ' ' + this.summCount + ' ' + 'товаров' + ' ' + 'на сумму' + ' ' + this.summGoods
+            divBask.appendChild(para)
+        } else {
+            if (this.summGoods <= 0 || this.summGoods === null) {
+                para.innerText = 'Корзина пуста'
+                divBask.appendChild(para)
+            }
+        }
+
+    }
 }
-
-// render() {
-//     if (this.summGoods > 0) {
-//         const para = document.createElement('p')
-//         divBask.appendChild(para)
-//     } else {
-//         if (this.summGoods < 0) {
-//             const para = document.createElement('p')
-//             divBask.appendChild(para)
-//         }
-//     }
-
-// }
-
 
 let multip = new Multi()
 let mnojGods = multip.mnoj()
-    // let rend = multip.render()
 let sumGood = multip.summ()
+let rend = multip.render()
 
 
 
